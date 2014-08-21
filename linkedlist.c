@@ -145,3 +145,47 @@ int printNth(struct node *head, int found, int n)
 printf("\nThe %d-th element is %d\n",n,ref2->data); */
 
 }
+
+
+void reverse(struct node **head)
+{
+    struct node *prev = *head;
+    struct node *cur = *head;
+    struct node *temp = *head;
+
+    if(head == NULL || (*head)->next ==  NULL)
+        return;
+
+    cur = cur->next;
+    prev->next = NULL;
+
+    while(cur != NULL)
+    {
+        temp = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = temp;
+    }
+
+    *head = prev;
+}
+
+
+struct node * recursivereverse(struct node *head)
+{
+
+    struct node *newhead = NULL;
+    struct node *prev = head;
+
+    /* empty list */
+    if (head == NULL || head->next == NULL)
+       return head;
+
+    newhead = recursivereverse(head->next);
+
+    prev->next->next = prev;
+    prev->next = NULL;
+
+    return newhead;
+}
+

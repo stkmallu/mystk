@@ -69,7 +69,7 @@ void push(struct stack *stack, int value)
     if(stack->top == (stack->capacity - 1))
     {
         printf("Stack Overflow\n");
-        return;
+        exit(EXIT_FAILURE);
     }
     stack->array[++stack->top] = value;
 }
@@ -80,7 +80,7 @@ int pop(struct stack * stack)
     if (stack->top == -1)
     {
         printf("Stack Underflow\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     val = stack->array[stack->top--];

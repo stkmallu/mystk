@@ -20,6 +20,12 @@ main ()
 
   int val = 0;
   struct stack *Stack = createstack (5);
+  
+  if(Stack == NULL)
+  {
+    printf("Stack Creation Failed\n");
+    return 1;
+  }
 
   push (Stack, 1);
   push (Stack, 2);
@@ -49,7 +55,10 @@ createstack (int capacity)
   stack->array = malloc (5 * sizeof (int));
 
   if (stack->array == NULL)
+  {
+    free(array);
     return NULL;
+  }
 
   return stack;
 }

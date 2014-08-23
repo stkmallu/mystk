@@ -149,25 +149,17 @@ printf("\nThe %d-th element is %d\n",n,ref2->data); */
 
 void reverse(struct node **head)
 {
-    struct node *prev = *head;
-    struct node *cur = *head;
-    struct node *temp = *head;
-
-    if(head == NULL || (*head)->next ==  NULL)
-        return;
-
-    cur = cur->next;
-    prev->next = NULL;
-
-    while(cur != NULL)
+    struct node* prev   = NULL;
+    struct node* current = *head_ref;
+    struct node* next;
+    while (current != NULL)
     {
-        temp = cur->next;
-        cur->next = prev;
-        prev = cur;
-        cur = temp;
+        next  = current->next;  
+        current->next = prev;   
+        prev = current;
+        current = next;
     }
-
-    *head = prev;
+    head_ref = prev;
 }
 
 

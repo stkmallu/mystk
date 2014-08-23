@@ -80,7 +80,7 @@ int pop(struct stack * stack)
     if (stack->top == -1)
     {
         printf("Stack Underflow\n");
-        return;
+        exit(1);
     }
 
     val = stack->array[stack->top--];
